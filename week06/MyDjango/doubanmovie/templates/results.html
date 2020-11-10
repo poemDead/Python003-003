@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <title>豆瓣短评展示</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    </head>
+    <body>
+        <header>
+            <div class="navbar navbar-dark bg-dark shadow-sm">
+                <div class="container d-flex justify-content-between">
+                    <a href="#" class="navbar-brand d-flex align-items-center">
+                      <strong>豆瓣电影短评展示</strong>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                  </div>
+            </div>
+        </header>
+        <section class="jumbotron text-center">
+            <div class="container">
+              <h1>电影：1917 - 部分短评展示</h1>
+              <p class="lead text-muted">仅展示部分3星以上短评</p>
+              <p>
+                  {% block cotent %}
+                <a href="#" class="btn btn-primary my-2">共统计短评：{{ counts }}个 ｜ 三星以上：{{ good_short_num }}个</a>
+                  {% endblock %}
+              </p>
+            </div>
+          </section>
+        <div class = "album py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    {% block content %}
+                    {% for short in good_short %}
+                        <div class="col-md-4">
+                            <div class="card mb-4 shadow-sm">
+                                <div class="card-body">
+                            <h2>{{short.star}}</h2>
+                            <p>{{short.comment}} </p>
+                            <p><a class="btn btn-secondary" href="#" role="button">{{short.vote}}人觉得说的对</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <!-- {% for short in shorts %}
+                        <div class="col-md-4">
+                            <div class="card mb-4 shadow-sm">
+                                <div class="card-body">
+                            <h2>{{short.star}}</h2>
+                            <p>{{short.comment}} </p>
+                            <p><a class="btn btn-secondary" href="#" role="button">{{short.vote}}人觉得说的对</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %} -->
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+        
+    </body>
+</html>
