@@ -23,7 +23,8 @@ class ZdmPhoneSpider(scrapy.Spider):
             title_xpath = f'//*[@id="feed-main-list"]/li[{num}]/div/div[2]/h5/a/text()'
             rank = response.xpath(rank_xpath).get()
             href = response.xpath(href_xpath).get()
-            title = response.xpath(title_xpath).get()
+            title_temp = response.xpath(title_xpath).get()
+            title = title_temp.split(':')[-1].strip()
             info = [rank,href,title]
             top10_info.append(info)
         for phone in top10_info:

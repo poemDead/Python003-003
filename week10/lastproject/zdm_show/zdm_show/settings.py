@@ -31,13 +31,16 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'index',
+    'bootstrap4',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'index',
+    
+    
 
 ]
 
@@ -85,7 +88,7 @@ WSGI_APPLICATION = 'zdm_show.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'testdb',
+        'NAME': 'zdmdb',
         'USER': 'root',
         'PASSWORD': 'password',
         'HOST': '127.0.0.1',
