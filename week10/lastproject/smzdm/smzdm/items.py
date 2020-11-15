@@ -9,4 +9,8 @@ import scrapy
 class SmzdmItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    pass
+    rank = scrapy.Field()
+    href = scrapy.Field()
+    title = scrapy.Field()
+    content = scrapy.Field()
+    sen = scrapy.Field()

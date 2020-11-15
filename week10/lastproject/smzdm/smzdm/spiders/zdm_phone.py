@@ -1,5 +1,5 @@
 from time import sleep
-
+from smzdm.items import SmzdmItem
 import scrapy
 import pandas as pd
 import numpy as np
@@ -55,13 +55,13 @@ class ZdmPhoneSpider(scrapy.Spider):
             comments = [i for i in temp if i != '']
             comments_sen = [SnowNLP(i).sentiments for i in comments]
             for i in range(len(comments)):
-                yield {
-                    'rank': rank,
-                    'href': href,
-                    'title': title,
-                    'comment': comments[i],
-                    'comment_sen': comments_sen[i],
-                }
+                item = SmzdmItem()
+                item['rank'] = rank
+                item['href'] = href
+                item['title'] = title
+                item['content'] = comments[i]
+                item['sen'] = comments_sen[i]
+                yield item
 
     
     def parse3(self, response):
@@ -73,11 +73,11 @@ class ZdmPhoneSpider(scrapy.Spider):
         comments = [i for i in temp if i != '']
         comments_sen = [SnowNLP(i).sentiments for i in comments]
         for i in range(len(comments)):
-            yield {
-                'rank': rank,
-                'href': href,
-                'title': title,
-                'comment': comments[i],
-                'comment_sen': comments_sen[i],
-            }
+            item = SmzdmItem()
+            item['rank'] = rank
+            item['href'] = href
+            item['title'] = title
+            item['content'] = comments[i]
+            item['sen'] = comments_sen[i]
+            yield item
 
