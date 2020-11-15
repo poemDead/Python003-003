@@ -1,0 +1,8 @@
+{% if form.errors %}
+    <p>账户密码错误，请重试。</p>
+{% endif %}
+<form action='/login1/' method="POST">
+    {% csrf_token %}
+    {{ form }}<br/>
+    <input type="submit" value="登陆">
+</form>  

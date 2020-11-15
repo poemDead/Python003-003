@@ -1,0 +1,8 @@
+<h1>Test Django Auth&Form</h1>
+<p>
+    {% if user.is_authenticated %}
+      Hello, {{ user.username }}!
+    {% else %}
+      Hello, Django!
+    {% endif %}
+</p>
