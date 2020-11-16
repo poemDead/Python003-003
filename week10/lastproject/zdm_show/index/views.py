@@ -5,6 +5,8 @@ from .models import CommentItem
 # Create your views here.
 def index(request):
     all_count = CommentItem.objects.all().count()
+    plus = CommentItem.objects.filter(comment_sen__gt = 0.5).count()
+    minus = CommentItem.objects.filter(comment_sen__lte = 0.5).count()
     top10_info = []
     for i in range(1,11):
         rank = i
